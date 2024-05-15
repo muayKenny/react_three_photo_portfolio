@@ -1,8 +1,9 @@
 import * as THREE from 'three';
 import { useRef, useState, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, Environment } from '@react-three/drei';
+import { useGLTF, Environment, Text } from '@react-three/drei';
 import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
+import { Perf } from 'r3f-perf';
 
 function Fujifilm({ ...props }) {
   const { z } = props;
@@ -56,7 +57,8 @@ function Fujifilm({ ...props }) {
 export default function App({ count = 50, depth = 80 }) {
   return (
     <Canvas camera={{ near: 0.01, far: 110, fov: 30 }} gl={{ alpha: false }}>
-      <color attach='background' args={['#85C6FC']} />
+      <Perf position='top-left' />
+      <color attach='background' args={['#E6DBC9']} />
 
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 10, 10]} intensity={1} />
@@ -65,6 +67,18 @@ export default function App({ count = 50, depth = 80 }) {
         {Array.from({ length: count }, (_, i) => (
           <Fujifilm key={i} scale={0.02} z={-(i / count) * depth} />
         ))}
+
+        <Text
+          font='../public/Danfo-Regular.woff'
+          fontSize={1}
+          depth={0.2}
+          rotateX={3}
+          anchorX='center'
+          anchorY='middle'
+        >
+          hoes
+        </Text>
+
         <EffectComposer>
           <DepthOfField
             target={[0, 0, 20]}
