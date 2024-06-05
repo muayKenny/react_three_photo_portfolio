@@ -1,0 +1,41 @@
+.overlay {
+  position: relative;
+  width: 95vw;
+  height: 100vh;
+
+  --border-style: 2px solid green;
+  --border-space: 20px;
+}
+
+.overlay-element {
+  position: absolute;
+  width: 20vw;
+  height: 25vh;
+}
+
+.overlay .top-left {
+  border-left: var(--border-style);
+  border-top: var(--border-style);
+  top: var(--border-space);
+  left: var(--border-space);
+}
+
+.overlay .top-right {
+  border-right: var(--border-style);
+  border-top: var(--border-style);
+  top: var(--border-space);
+  right: var(--border-space);
+}
+
+.overlay .bottom-left {
+  border-left: var(--border-style);
+  border-bottom: var(--border-style);
+  bottom: var(--border-space);
+}
+
+.overlay .bottom-right {
+  border-right: var(--border-style);
+  border-bottom: var(--border-style);
+  bottom: var(--border-space);
+  right: var(--border-space);
+}
