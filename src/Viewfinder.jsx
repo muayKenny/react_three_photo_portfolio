@@ -20,17 +20,13 @@ const Viewfinder = () => {
             styles['overlay-element'],
             styles['bottom-left']
           )}
-        >
-          <h1>MF</h1>
-        </div>
+        ></div>
         <div
           className={classNames(
             styles['overlay-element'],
             styles['bottom-right']
           )}
-        >
-          <h3>100 ISO</h3>
-        </div>
+        ></div>
       </div>
     </Html>
   );
