@@ -66,7 +66,7 @@ export default function Scene({ count, depth }) {
             <group ref={textRef}>
               <AnimatedText3D
                 material={material}
-                font='../public/Danfo_Regular.json'
+                font='/Danfo_Regular.json'
                 size={0.65}
                 height={0.2}
                 curveSegments={15}

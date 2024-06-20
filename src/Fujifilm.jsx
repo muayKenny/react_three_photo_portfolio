@@ -32,7 +32,7 @@ const Fujifilm = ({ ...props }) => {
     }
   });
 
-  const { nodes, materials } = useGLTF('camera_real-v1.glb');
+  const { nodes, materials } = useGLTF('/camera_real-v1.glb');
 
   return (
     <group ref={ref} {...props} dispose={null}>
