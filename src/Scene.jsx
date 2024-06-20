@@ -26,8 +26,9 @@ export default function Scene({ count, depth }) {
 
   const [matcapTexture] = useMatcapTexture('7B5254_E9DCC7_B19986_C8AC91', 256);
 
-  const { fps_visible } = useControls('Performance Controls', {
-    fps_visible: false,
+  const { fps, move_camera } = useControls({
+    fps: false,
+    move_camera: false,
   });
 
   useEffect(() => {
@@ -54,8 +55,8 @@ export default function Scene({ count, depth }) {
 
   return (
     <>
-      <OrbitControls makeDefault />
-      {fps_visible ? <Perf position='top-left' /> : null}
+      {move_camera ? <OrbitControls /> : null}
+      {fps ? <Perf position='top-left' /> : null}
       <color attach='background' args={['#E6DBC9']} />
 
       <ambientLight intensity={0.5} />
