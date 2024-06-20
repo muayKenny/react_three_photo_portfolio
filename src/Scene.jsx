@@ -1,19 +1,20 @@
 import * as THREE from 'three';
 import { useRef, useState, useEffect, Suspense } from 'react';
-import { useFrame } from '@react-three/fiber';
 import { motion } from 'framer-motion-3d';
 import {
-  useGLTF,
   Environment,
   Float,
   Center,
-  Sky,
   useMatcapTexture,
   Text3D,
   OrbitControls,
 } from '@react-three/drei';
+import { useControls } from 'leva';
+
 import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
+
 import { Perf } from 'r3f-perf';
+
 import Fujifilm from './Fujifilm';
 
 const AnimatedText3D = motion(Text3D);
@@ -24,6 +25,10 @@ export default function Scene({ count, depth }) {
   const textRef = useRef();
 
   const [matcapTexture] = useMatcapTexture('7B5254_E9DCC7_B19986_C8AC91', 256);
+
+  const { fps_visible } = useControls('Performance Controls', {
+    fps_visible: false,
+  });
 
   useEffect(() => {
     matcapTexture.colorSpace = THREE.sRGBColorSpace;
@@ -50,7 +55,7 @@ export default function Scene({ count, depth }) {
   return (
     <>
       <OrbitControls makeDefault />
-      <Perf position='top-left' />
+      {fps_visible ? <Perf position='top-left' /> : null}
       <color attach='background' args={['#E6DBC9']} />
 
       <ambientLight intensity={0.5} />
@@ -94,12 +99,6 @@ export default function Scene({ count, depth }) {
             </group>
           </Center>
         </Float>
-        {/* <Sky
-          distance={4}
-          sunPosition={[0, 1, 0]}
-          inclination={0}
-          azimuth={0.25}
-        /> */}
 
         <EffectComposer>
           <DepthOfField

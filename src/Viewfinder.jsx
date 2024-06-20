@@ -7,6 +7,7 @@ const Viewfinder = () => {
     <Html
       as='div' // Wrapping element (default: 'div')
       center // Adds a -50%/-50% css transform (default: false) [ignored in transform mode]
+      style={{ pointerEvents: 'none' }}
     >
       <div className={styles.overlay}>
         <div
