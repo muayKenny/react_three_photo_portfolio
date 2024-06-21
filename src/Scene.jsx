@@ -20,7 +20,7 @@ import Fujifilm from './Fujifilm';
 const AnimatedText3D = motion(Text3D);
 const material = new THREE.MeshMatcapMaterial();
 
-export default function Scene({ count, depth }) {
+export default function Scene({ count, depth, isMobile }) {
   const [isClicked, setIsClicked] = useState(false);
   const textRef = useRef();
 
@@ -55,7 +55,7 @@ export default function Scene({ count, depth }) {
 
   return (
     <>
-      {movable_camera ? <OrbitControls /> : null}
+      {movable_camera || isMobile ? <OrbitControls /> : null}
       {fps ? <Perf position='top-left' /> : null}
       <color attach='background' args={['#E6DBC9']} />
 
