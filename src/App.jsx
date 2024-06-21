@@ -8,7 +8,7 @@ export default function App({ count = 50, depth = 100 }) {
   return (
     <>
       <Leva collapsed />
-      <Canvas camera={{ near: 0.01, far: 110, fov: 30 }} gl={{ alpha: false }}>
+      <Canvas camera={{ near: 0.01, far: 110, fov: 70 }} gl={{ alpha: false }}>
         <Viewfinder />
 
         <Scene count={count} depth={depth} />
